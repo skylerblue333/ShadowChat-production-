@@ -1,0 +1,11 @@
+services:
+  shadowchat-production:
+    build: .
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: ${DATABASE_URL:?DATABASE_URL is required}
+      REDIS_URL: ${REDIS_URL:?REDIS_URL is required}
+      AUTH_SERVICE_URL: ${AUTH_SERVICE_URL:?AUTH_SERVICE_URL is required}
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
