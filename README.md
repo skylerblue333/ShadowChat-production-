@@ -1,39 +1,35 @@
-# ShadowChat Production
+# ShadowChat Production — Archived Integration Stub
 
-Production integration boundary for SKYCOIN4444 ShadowChat. Application behavior remains in the canonical ShadowChat implementation; this repository owns deployment and runtime integration concerns.
+**Portfolio status: ARCHIVED.**
 
-## Integration contract
-- Realtime transport: Socket.IO/WebSocket-compatible gateway
-- Events: `message`, `presence`, `typing`
-- Persistence: canonical SKYCOIN4444 database service
-- Queue: `TypeScript-Message-Queue` / BullMQ
-- Authentication: `TS-Auth-Service`
-- Canonical integration target: `skycoin4444-canonical`
+This repository is retained for historical reference only. It is not a production deployment, runnable ShadowChat application, or canonical source of ShadowChat behavior.
 
-## Deployment configuration
+## Why it is archived
 
-`docker-compose.yml` defines the runtime contract and requires `DATABASE_URL`, `REDIS_URL`, and `AUTH_SERVICE_URL`.
+The repository contains deployment/integration metadata but no application source tree or Dockerfile. Its previous `package.json` scripts reported successful build/test/lint results without executing meaningful verification, and `docker-compose.yml` referenced a local image build that this repository cannot perform as-is.
 
-The compose file does **not** create or imply a production database, Redis deployment, authentication service, TLS certificate, or public URL. Those dependencies must be provisioned and verified separately.
+Keeping this repository active would duplicate and blur the canonical ShadowChat work. Useful deployment ideas should be migrated deliberately into the canonical ShadowChat repository or the integrated SKYCOIN4444 application rather than developed independently here.
 
-## Readiness gate
+## Canonical direction
 
-Do not label this service production-ready until database connectivity, authentication, realtime messaging, deployment, TLS/live URL, and authenticated smoke tests all pass.
+Use the maintained canonical ShadowChat implementation for application code and verified runtime behavior. Treat this repository only as historical evidence of an earlier deployment-boundary concept.
 
-## Current limitation
+Potential integration contracts preserved from the earlier design include:
 
-This repository is currently an integration/deployment boundary rather than a complete ShadowChat implementation. Existing ShadowChat repositories must be compared before consolidation.
+- realtime messaging over WebSocket/Socket.IO-compatible interfaces;
+- external database and Redis dependencies;
+- a separate authentication boundary;
+- queue-backed background work.
 
-## Preservation rule
+These are architecture notes, not verified capabilities of this archived repository.
 
-Preserve working behavior and migrate capabilities into the canonical ecosystem rather than replacing code solely for architectural consistency.
+## Historical deployment stub
 
-## Domains
+`docker-compose.yml` is retained to preserve history. It references `DATABASE_URL`, `REDIS_URL`, and `AUTH_SERVICE_URL`, but there is no Dockerfile or application source in this repository, so the compose definition is **not a verified deployable stack**.
 
-- https://skycoin4444.com
-- https://skycoin4444.net
-- https://skycoin4444.shop
-- https://skycoin44.token
+## Preservation policy
+
+Do not delete useful history. If a file or idea from this repository is still valuable, port it through a reviewed change into the canonical implementation and verify it there.
 
 ## Authorship
 
